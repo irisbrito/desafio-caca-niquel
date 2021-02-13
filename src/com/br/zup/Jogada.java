@@ -12,12 +12,9 @@ public class Jogada {
     List<Simbolo> sorteados;
     List<Simbolo> simboloSorteados = new ArrayList<>();
 
-    private int opcoes;
     private int total;
     private int quantidadeDeSorteios;
-    private int bonus;
-    private int totalComBonus;
-    private int acertos;
+
 
     public Jogada() {
         this.sorteados = new ArrayList<>();
@@ -30,7 +27,7 @@ public class Jogada {
   public void sortear() {
       Random random = new Random();
       Simbolo[] todosOsSimbolos = Simbolo.values();
-      opcoes = todosOsSimbolos.length;
+      int opcoes = todosOsSimbolos.length;
 
       int valorAleatorio = random.nextInt(opcoes);
       System.out.println(todosOsSimbolos[valorAleatorio]);
@@ -69,7 +66,7 @@ public class Jogada {
      * Método para validar se o usuário vai ganhar pontos bônus ou não
      */
     public void validarBonus(){
-        acertos = 0;
+       int acertos = 0;
         Simbolo simbolo = sorteados.get(0);
 
         for(Simbolo sorteado: sorteados) {
@@ -79,8 +76,8 @@ public class Jogada {
         }
 
         if (acertos == sorteados.size()) {
-            bonus = 100;
-            totalComBonus = total * bonus;
+            int bonus = 100;
+            int totalComBonus = total * bonus;
             IO.mostrarTexto("Pontuação total com o Bonus: " + totalComBonus);
         } else {
             IO.mostrarTexto("Você não teve pontos bonus!");

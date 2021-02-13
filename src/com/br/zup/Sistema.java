@@ -7,7 +7,6 @@ package com.br.zup;
 public class Sistema {
     Jogada jogada = new Jogada();
 
-
     public Sistema(){
 
     }
