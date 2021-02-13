@@ -7,6 +7,7 @@ package com.br.zup;
 public class Sistema {
     Jogada jogada = new Jogada();
 
+
     public Sistema(){
 
     }
@@ -19,8 +20,8 @@ public class Sistema {
         IO.mostrarTexto("-------------------------");
         jogada.verificarDificuldade();
         jogada.gerarJogada();
+        jogada.validarBonus();
     }
-
 
     /**
      * Método para execução do sistema
@@ -28,6 +29,5 @@ public class Sistema {
    public void executarSistema(){
         menu();
     }
-
 }
 

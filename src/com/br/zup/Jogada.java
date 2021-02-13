@@ -9,14 +9,19 @@ import java.util.Random;
  * @author Iris Souza
  */
 public class Jogada {
-    private Simbolo simbolo;
-    List<Simbolo> sorteados = new ArrayList<>();
+    List<Simbolo> sorteados;
+    List<Simbolo> simboloSorteados = new ArrayList<>();
 
     private int opcoes;
-    private int valorAleatorio;
     private int total;
     private int quantidadeDeSorteios;
     private int bonus;
+    private int totalComBonus;
+    private int acertos;
+
+    public Jogada() {
+        this.sorteados = new ArrayList<>();
+    }
 
     /**
      * Método para gerar os simbolos aletórios a partir dos itens do Enum
@@ -27,7 +32,7 @@ public class Jogada {
       Simbolo[] todosOsSimbolos = Simbolo.values();
       opcoes = todosOsSimbolos.length;
 
-      valorAleatorio = random.nextInt(opcoes);
+      int valorAleatorio = random.nextInt(opcoes);
       System.out.println(todosOsSimbolos[valorAleatorio]);
       System.out.println(todosOsSimbolos[valorAleatorio].getPontos());
       total += todosOsSimbolos[valorAleatorio].pontos;
@@ -48,7 +53,7 @@ public class Jogada {
                 sortear();
             }
         }
-        calcularPontuacao();
+        mostrarPontuacao();
     }
 
     /**
@@ -61,10 +66,32 @@ public class Jogada {
     }
 
     /**
-     * Método para calcular a pontuação total do usuário na jogada
+     * Método para validar se o usuário vai ganhar pontos bônus ou não
+     */
+    public void validarBonus(){
+        acertos = 0;
+        Simbolo simbolo = sorteados.get(0);
+
+        for(Simbolo sorteado: sorteados) {
+            if (simbolo.equals(sorteado)) {
+                acertos++;
+            }
+        }
+
+        if (acertos == sorteados.size()) {
+            bonus = 100;
+            totalComBonus = total * bonus;
+            IO.mostrarTexto("Pontuação total com o Bonus: " + totalComBonus);
+        } else {
+            IO.mostrarTexto("Você não teve pontos bonus!");
+        }
+    }
+
+    /**
+     * Método para mostrar a pontuação total do usuário na jogada
      * @author Iris Souza
      */
-    public void calcularPontuacao(){
-        IO.mostrarTexto("O seu total de pontos é: " + total);
+    public void mostrarPontuacao(){
+        IO.mostrarTexto("Seus pontos são: " + total);
     }
 }
