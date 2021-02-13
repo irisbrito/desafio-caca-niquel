@@ -6,10 +6,10 @@ package com.br.zup;
  Sempre que é executado os valores devem ser somados e apresentado ao usuário o valor total da pontuação
  */
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
+/**
+ * Classe principal
+ * @author Iris Souza
+ */
 public class Main {
 
     public static void main(String[] args) {
