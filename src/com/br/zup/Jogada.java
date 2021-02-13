@@ -11,6 +11,7 @@ public class Jogada {
     private int opcoes;
     private int valorAleatorio;
     private int total;
+    private int quantidadeDeSorteios;
 
 
 
@@ -37,10 +38,21 @@ public class Jogada {
   }
 
     public void gerarJogada() {
+        if (quantidadeDeSorteios <= 3) {
             sortear();
             sortear();
             sortear();
+        } else {
+            for (int contador = 0; contador < quantidadeDeSorteios; contador ++) {
+                sortear();
+            }
+        }
         calcularPontuacao();
+    }
+
+    public void verificarDificuldade(){
+        IO.mostrarTexto("Caso queira aumentar a dificuldade digite um número maior que 3");
+        quantidadeDeSorteios = IO.criarScanner().nextInt();
     }
 
 

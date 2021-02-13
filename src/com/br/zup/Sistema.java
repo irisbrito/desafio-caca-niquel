@@ -7,7 +7,7 @@ import java.util.Random;
 public class Sistema {
     private Simbolo simbolos;
     Jogada jogada = new Jogada();
-    private static List<Simbolo> listaFrutas = new ArrayList<>();
+    //private static List<Simbolo> listaFrutas = new ArrayList<>();
 
     public Sistema(){
 
@@ -16,6 +16,7 @@ public class Sistema {
     public void menu(){
         IO.mostrarTexto("JOGO CAÇA NÍQUEL\n BANANA: 10 PONTOS \n MORANGO: 20 PONTOS \n ESTRELA: 40 PONTOS");
         IO.mostrarTexto("-------------------------");
+        jogada.verificarDificuldade();
         jogada.gerarJogada();
     }
 
